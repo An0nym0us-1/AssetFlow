@@ -1,0 +1,38 @@
+{
+  "name": "assetflow",
+  "version": "1.0.0",
+  "description": "Enterprise Asset &amp; Resource Management System (Odoo Hackathon 2026)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/An0nym0us-1/AssetFlow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/An0nym0us-1/AssetFlow/issues"
+  },
+  "homepage": "https://github.com/An0nym0us-1/AssetFlow#readme",
+  "dependencies": {
+    "cloudinary": "^2.10.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "joi": "^18.2.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.7.4",
+    "multer": "^2.2.0",
+    "multer-storage-cloudinary": "^2.2.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^9.1.0"
+  }
+}
