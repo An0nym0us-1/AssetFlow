@@ -1,0 +1,9 @@
+<h1>Departments</h1>
+
+<a href="/departments/new">Add Department</a>
+
+<ul>
+<% for(let department of departments){ %>
+    <li><%= department.name %></li>
+<% } %>
+</ul>
