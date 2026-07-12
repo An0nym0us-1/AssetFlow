@@ -1,0 +1,202 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Register New Asset</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/assets" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Asset Name</label>
+                            <input
+                                type="text"
+                                name="asset[assetName]"
+                                class="form-control"
+                                placeholder="Enter Asset Name"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Asset Tag</label>
+                            <input
+                                type="text"
+                                name="asset[assetTag]"
+                                class="form-control"
+                                placeholder="Example: AST-101"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Serial Number</label>
+                            <input
+                                type="text"
+                                name="asset[serialNumber]"
+                                class="form-control"
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+
+                            <select
+                                name="asset[category]"
+                                class="form-select"
+                                required
+                            >
+                                <option selected disabled>Select Category</option>
+
+                                <% if(typeof categories !== "undefined"){ %>
+
+                                    <% categories.forEach(category => { %>
+
+                                        <option value="<%= category._id %>">
+                                            <%= category.name %>
+                                        </option>
+
+                                    <% }) %>
+
+                                <% } %>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+
+                            <select
+                                name="asset[department]"
+                                class="form-select"
+                                required
+                            >
+                                <option selected disabled>Select Department</option>
+
+                                <% if(typeof departments !== "undefined"){ %>
+
+                                    <% departments.forEach(department => { %>
+
+                                        <option value="<%= department._id %>">
+                                            <%= department.name %>
+                                        </option>
+
+                                    <% }) %>
+
+                                <% } %>
+
+                            </select>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Purchase Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    name="asset[purchaseDate]"
+                                    class="form-control"
+                                >
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Purchase Cost
+                                </label>
+
+                                <input
+                                    type="number"
+                                    name="asset[purchaseCost]"
+                                    class="form-control"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                name="asset[location]"
+                                class="form-control"
+                            >
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Condition
+                                </label>
+
+                                <select
+                                    name="asset[condition]"
+                                    class="form-select"
+                                >
+                                    <option>Excellent</option>
+                                    <option selected>Good</option>
+                                    <option>Fair</option>
+                                    <option>Poor</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Status
+                                </label>
+
+                                <select
+                                    name="asset[status]"
+                                    class="form-select"
+                                >
+                                    <option selected>Available</option>
+                                    <option>Allocated</option>
+                                    <option>Maintenance</option>
+                                    <option>Retired</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-success">
+                            Register Asset
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

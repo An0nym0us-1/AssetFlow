@@ -1,1 +1,214 @@
-s
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-warning">
+                    <h3>Edit Asset</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/assets/<%= asset._id %>?_method=PUT" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Asset Name</label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="asset[assetName]"
+                                value="<%= asset.assetName %>"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Asset Tag</label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="asset[assetTag]"
+                                value="<%= asset.assetTag %>"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Serial Number</label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="asset[serialNumber]"
+                                value="<%= asset.serialNumber %>"
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+
+                            <select
+                                class="form-select"
+                                name="asset[category]"
+                            >
+
+                                <% categories.forEach(category=> { %>
+
+                                    <option
+                                        value="<%= category._id %>"
+                                        <%= asset.category._id.equals(category._id) ? "selected" : "" %>
+                                    >
+                                        <%= category.name %>
+                                    </option>
+
+                                <% }) %>
+
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Department
+                            </label>
+
+                            <select
+                                class="form-select"
+                                name="asset[department]"
+                            >
+
+                                <% departments.forEach(department=> { %>
+
+                                    <option
+                                        value="<%= department._id %>"
+                                        <%= asset.department._id.equals(department._id) ? "selected" : "" %>
+                                    >
+                                        <%= department.name %>
+                                    </option>
+
+                                <% }) %>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Purchase Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                name="asset[purchaseDate]"
+                                value="<%= asset.purchaseDate ? asset.purchaseDate.toISOString().split('T')[0] : '' %>"
+                            >
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Purchase Cost
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="asset[purchaseCost]"
+                                value="<%= asset.purchaseCost %>"
+                            >
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="asset[location]"
+                                value="<%= asset.location %>"
+                            >
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Condition
+                            </label>
+
+                            <select
+                                class="form-select"
+                                name="asset[condition]"
+                            >
+
+                                <option value="Excellent" <%= asset.condition==="Excellent" ? "selected" : "" %>>Excellent</option>
+
+                                <option value="Good" <%= asset.condition==="Good" ? "selected" : "" %>>Good</option>
+
+                                <option value="Fair" <%= asset.condition==="Fair" ? "selected" : "" %>>Fair</option>
+
+                                <option value="Poor" <%= asset.condition==="Poor" ? "selected" : "" %>>Poor</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Status
+                            </label>
+
+                            <select
+                                class="form-select"
+                                name="asset[status]"
+                            >
+
+                                <option value="Available" <%= asset.status==="Available" ? "selected" : "" %>>Available</option>
+
+                                <option value="Allocated" <%= asset.status==="Allocated" ? "selected" : "" %>>Allocated</option>
+
+                                <option value="Maintenance" <%= asset.status==="Maintenance" ? "selected" : "" %>>Maintenance</option>
+
+                                <option value="Retired" <%= asset.status==="Retired" ? "selected" : "" %>>Retired</option>
+
+                            </select>
+
+                        </div>
+
+                        <button class="btn btn-success">
+                            Update Asset
+                        </button>
+
+                        <a
+                            href="/assets/<%= asset._id %>"
+                            class="btn btn-secondary"
+                        >
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
