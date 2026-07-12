@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const dbConnection = require("./config/db");
 const departmentRoutes = require("./routes/department");
+const categoryRoutes = require("./routes/category");
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,6 +23,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/departments", departmentRoutes);
+app.use("/categories", categoryRoutes);
 
 dbConnection()
   .then(() => {
