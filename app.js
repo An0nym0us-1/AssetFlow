@@ -25,6 +25,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/departments", departmentRoutes);
 app.use("/categories", categoryRoutes);
 
+//dashboard route
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard/index");
+});
+
 dbConnection()
   .then(() => {
     console.log("MongoDB Connected");
