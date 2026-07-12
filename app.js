@@ -8,6 +8,8 @@ const dbConnection = require("./config/db");
 const departmentRoutes = require("./routes/department");
 const categoryRoutes = require("./routes/category");
 const assetRoutes = require("./routes/asset");
+const allocationRoutes = require("./routes/allocation");
+const dashboardRoutes = require("./routes/dashboard");
 
 const PORT = process.env.PORT || 3000;
 
@@ -27,6 +29,8 @@ app.use("/departments", departmentRoutes);
 app.use("/categories", categoryRoutes);
 
 app.use("/assets", assetRoutes);
+app.use("/allocations", allocationRoutes);
+app.use("/", dashboardRoutes);
 
 //dashboard route
 app.get("/dashboard", (req, res) => {
