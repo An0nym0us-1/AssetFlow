@@ -15,11 +15,13 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.send("AssetFlow Server Running...");
+app.get("/departments", (req, res) => {
+  res.render("./dashboard/index.ejs");
 });
 
 dbConnection()
