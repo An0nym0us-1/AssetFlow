@@ -1,9 +1,34 @@
-<h1>Create Department</h1>
+<% layout("/layouts/boilerplate") %>
 
-<form action="/departments" method="POST">
-  <input type="text" name="department[name]" placeholder="Department Name" />
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card shadow">
+        <div class="card-header">
+          <h3>Create Department</h3>
+      </div>
 
-  <textarea name="department[description]" placeholder="Description"></textarea>
+      <div class="card-body"> 
+        <form action="/departments" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Department Name</label>
+            <input
+            type="text"
+            class="form-control"
+            name="department[name]"
+            required>
+          </div>
 
-  <button>Create</button>
-</form>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              rows="4"
+              name="department[description]"></textarea>
+          </div>
+
+          <button class="btn btn-success">Create Department</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

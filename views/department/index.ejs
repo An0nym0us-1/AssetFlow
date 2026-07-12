@@ -1,9 +1,52 @@
-<h1>Departments</h1>
+<% layout("/layouts/boilerplate") %>
 
-<a href="/departments/new">Add Department</a>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Departments</h2>
+    <a href="/departments/new" class="btn btn-primary">
+        + Add Department
+    </a>
+</div>
 
-<ul>
-<% for(let department of departments){ %>
-    <li><%= department.name %></li>
-<% } %>
-</ul>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <% if(departments.length===0){ %>
+            <div class="alert alert-info">
+                No Departments Found
+            </div>
+        <% }else{ %>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% departments.forEach((department,index)=>{ %>
+                <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= department.name %></td>
+                    <td><%= department.description %></td>
+                    <td>
+                        <a href="/departments/<%= department._id %>/edit"
+                        class="btn btn-warning btn-sm">
+                        Edit
+                        </a>
+                        <form
+                            action="/departments/<%= department._id %>?_method=DELETE"
+                            method="POST"
+                            class="d-inline">
+
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <% } %>
+    </div>  
+</div>
