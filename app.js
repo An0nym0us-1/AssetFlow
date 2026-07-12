@@ -7,6 +7,7 @@ const ejsMate = require("ejs-mate");
 const dbConnection = require("./config/db");
 const departmentRoutes = require("./routes/department");
 const categoryRoutes = require("./routes/category");
+const assetRoutes = require("./routes/asset");
 
 const PORT = process.env.PORT || 3000;
 
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/departments", departmentRoutes);
 app.use("/categories", categoryRoutes);
+
+app.use("/assets", assetRoutes);
 
 //dashboard route
 app.get("/dashboard", (req, res) => {
