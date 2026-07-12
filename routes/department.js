@@ -10,4 +10,11 @@ router
 
 router.get("/new", departmentController.renderNewForm);
 
+router.get("/:id/edit", departmentController.renderEditForm);
+
+router
+  .route("/:id")
+  .put(departmentController.updateDepartment)
+  .delete(departmentController.destroyDepartment);
+
 module.exports = router;

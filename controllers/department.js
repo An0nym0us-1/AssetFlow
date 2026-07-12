@@ -15,3 +15,29 @@ module.exports.createDepartment = async (req, res) => {
 
   res.redirect("/departments");
 };
+
+module.exports.updateDepartment = async (req, res) => {
+  const { id } = req.params;
+
+  await Department.findByIdAndUpdate(id, {
+    ...req.body.department,
+  });
+
+  res.redirect("/departments");
+};
+
+module.exports.destroyDepartment = async (req, res) => {
+  const { id } = req.params;
+
+  await Department.findByIdAndDelete(id);
+
+  res.redirect("/departments");
+};
+
+module.exports.renderEditForm = async (req, res) => {
+  const { id } = req.params;
+
+  const department = await Department.findById(id);
+
+  res.render("department/edit", { department });
+};
